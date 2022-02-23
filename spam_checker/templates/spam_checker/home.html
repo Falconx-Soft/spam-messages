@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<div class="auth-wrapper container mt-4">
+    <h4 class="text-center mb-4">
+        Spam Message Detector
+    </h4>
+    <div class="auth-content container">
+        <div class="row justify-content-center">
+            <div class="card col-5 mr-4">
+                <div class="row align-items-center text-center">
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <h4 class="mb-3 f-w-400">
+                                Enetr your message
+                            </h4>
+                            <span class="mb-0 text-muted">
+    
+                            </span>
+                            <!-- dummy spacer -->
+                            <p> <br /> </p>
+                            <form method="post" action="/">
+    
+                                {% csrf_token %} 
+                                
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="feather icon-user"></i></span>
+                                    </div>
+                                    <textarea type="text" class="form-control" style="resize: none;height: 140px;"  name = "input_text" placeholder="Enter Message">{{input_text}}</textarea>
+                                </div>
+
+                                <button type="submit" name="login" class="btn btn-block btn-primary mb-4">Submit</button>
+                            
+                            </form>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if result %}
+            <div class="card col-5 ml-4">
+                <div class="row align-items-center text-center">
+                    <div class="col-md-12">
+                        <div class="card-body">
+                           
+                            <h4 class="mb-3 f-w-400">
+                                Prediction
+                            </h4>
+                            
+                            <p style="color: rgb({{color.0}}, {{color.1}}, {{color.2}});" >{{result}}</p>
+                            <!-- dummy spacer -->
+                            <p> <br /> </p>
+                            
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
